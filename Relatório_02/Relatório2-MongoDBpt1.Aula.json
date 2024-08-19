@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "66c3ba3f09df15533188510c"
+  },
+  "professor": {
+    "nome": "Lucas"
+  },
+  "assunto": "Programação Orientada a Objetos",
+  "alunos": [
+    {
+      "nome": "Maria"
+    },
+    {
+      "nome": "Pedro"
+    },
+    {
+      "nome": "João"
+    },
+    {
+      "nome": "Ana"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c3ba4b09df15533188510d"
+  },
+  "professor": {
+    "nome": "Mariana"
+  },
+  "assunto": "Banco de Dados",
+  "alunos": [
+    {
+      "nome": "Carlos"
+    },
+    {
+      "nome": "Fernanda"
+    },
+    {
+      "nome": "Roberto"
+    },
+    {
+      "nome": "Carla"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c3ba5109df15533188510e"
+  },
+  "professor": {
+    "nome": "Tiago"
+  },
+  "assunto": "Redes de Computadores",
+  "alunos": [
+    {
+      "nome": "Renato"
+    },
+    {
+      "nome": "Bianca"
+    },
+    {
+      "nome": "Sérgio"
+    },
+    {
+      "nome": "Luciana"
+    }
+  ]
+}]
