@@ -1,0 +1,73 @@
+{
+  $jsonSchema: {
+    bsonType: "object",
+    required: ["nome", "nota", "corridas"],
+    properties: {
+      nome: {
+        bsonType: "string",
+        description:
+          "deve ser uma string e é obrigatória"
+      },
+      nota: {
+        bsonType: ["double", "int"],
+        minimum: 0,
+        maximum: 10,
+        description:
+          "deve ser um número (double ou int) entre 0 e 10 e é obrigatória"
+      },
+      corridas: {
+        bsonType: "array",
+        items: {
+          bsonType: "object",
+          required: [
+            "nota",
+            "distancia",
+            "valor",
+            "passageiro"
+          ],
+          properties: {
+            nota: {
+              bsonType: ["double", "int"],
+              minimum: 0,
+              maximum: 10,
+              description:
+                "deve ser um número (double ou int) entre 0 e 10 e é obrigatória"
+            },
+            distancia: {
+              bsonType: ["double", "int"],
+              minimum: 0,
+              description:
+                "deve ser um número (double ou int) que representa a distância da corrida e é obrigatória"
+            },
+            valor: {
+              bsonType: ["double", "int"],
+              minimum: 0,
+              description:
+                "deve ser um número (double ou int) que representa o valor da corrida e é obrigatória"
+            },
+            passageiro: {
+              bsonType: "object",
+              required: ["nome", "documento"],
+              properties: {
+                nome: {
+                  bsonType: "string",
+                  description:
+                    "deve ser uma string e é obrigatória"
+                },
+                documento: {
+                  bsonType: "string",
+                  description:
+                    "deve ser um inteiro longo e é obrigatório"
+                }
+              },
+              description:
+                "Informações do passageiro são obrigatórias"
+            }
+          },
+          description:
+            "Cada corrida realizada pelo motorista"
+        }
+      }
+    }
+  }
+}
