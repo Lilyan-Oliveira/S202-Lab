@@ -1,0 +1,55 @@
+CREATE (c1:Character {name: "Frodo Baggins", age: 50, skill: "Resistência à corrupção", race: "hobbit"});
+CREATE (c2:Character {name: "Samwise Gamgee", age: 38, skill: "Lealdade", race: "hobbit"});
+CREATE (c3:Character {name: "Legolas", age: 2931, skill: "Mestre arqueiro", race: "elfo"});
+CREATE (c4:Character {name: "Gimli", age: 139, skill: "Combate com machado", race: "anao"});
+CREATE (c5:Character {name: "Aragorn", age: 87, skill: "Espadachim", race: "humano"});
+CREATE (c6:Character {name: "Gandalf", age: 2019, skill: "Feitiçaria", race: "mago"});
+CREATE (c7:Character {name: "Boromir", age: 41, skill: "Liderança militar", race: "humano"});
+CREATE (c8:Character {name: "Thranduil", age: 4000, skill: "Comando", race: "elfo"});
+CREATE (c9:Character {name: "Bilbo Baggins", age: 111, skill: "Furtividade", race: "hobbit"});
+CREATE (c10:Character {name: "Thorin Oakenshield", age: 195, skill: "Estratégia militar", race: "anao"});
+
+// Frodo e Samwise são amigos
+MATCH (c1:Character {name: "Frodo Baggins"}), (c2:Character {name: "Samwise Gamgee"})
+CREATE (c1)-[:FRIEND_OF]->(c2),
+       (c2)-[:FRIEND_OF]->(c1);
+
+// Frodo recebeu o Anel de Bilbo
+MATCH (c1:Character {name: "Frodo Baggins"}), (c9:Character {name: "Bilbo Baggins"})
+CREATE (c9)-[:PASSED_THE_RING_TO]->(c1);
+
+// Legolas e Gimli são aliados
+MATCH (c3:Character {name: "Legolas"}), (c4:Character {name: "Gimli"})
+CREATE (c3)-[:ALLY_OF]->(c4),
+       (c4)-[:ALLY_OF]->(c3);
+
+// Aragorn lidera a comitiva de Legolas e Gimli
+MATCH (c3:Character {name: "Legolas"}), (c4:Character {name: "Gimli"}), (c5:Character {name: "Aragorn"})
+CREATE (c5)-[:LEADS]->(c3),
+       (c5)-[:LEADS]->(c4);
+
+// Gandalf guia a Sociedade do Anel
+MATCH (c1:Character {name: "Frodo Baggins"}), (c2:Character {name: "Samwise Gamgee"}), (c6:Character {name: "Gandalf"})
+CREATE (c6)-[:GUIDES]->(c1),
+       (c6)-[:GUIDES]->(c2);
+
+// Boromir é parte da Sociedade do Anel
+MATCH (c1:Character {name: "Frodo Baggins"}), (c7:Character {name: "Boromir"})
+CREATE (c7)-[:PROTECTS]->(c1);
+
+// Thranduil é o pai de Legolas
+MATCH (c3:Character {name: "Legolas"}), (c8:Character {name: "Thranduil"})
+CREATE (c8)-[:FATHER_OF]->(c3);
+
+// Thorin liderou uma companhia de anões, incluindo Gimli
+MATCH (c4:Character {name: "Gimli"}), (c10:Character {name: "Thorin Oakenshield"})
+CREATE (c10)-[:LEADS]->(c4);
+
+// Gandalf é amigo de Bilbo
+MATCH (c6:Character {name: "Gandalf"}), (c9:Character {name: "Bilbo Baggins"})
+CREATE (c6)-[:FRIEND_OF]->(c9),
+       (c9)-[:FRIEND_OF]->(c6);
+
+// Aragorn protege Frodo
+MATCH (c1:Character {name: "Frodo Baggins"}), (c5:Character {name: "Aragorn"})
+CREATE (c5)-[:PROTECTS]->(c1);
